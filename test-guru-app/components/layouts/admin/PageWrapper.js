@@ -1,12 +1,12 @@
 import React from 'react';
 
-const Content = (props) => {
+const PageWrapper = (props) => {
   const { children } = props;
   return (
-    <div className="content">
+    <div className="page-wrapper">
       {children}
     </div>
   )
 }
 
-export default Content;
+export default PageWrapper;

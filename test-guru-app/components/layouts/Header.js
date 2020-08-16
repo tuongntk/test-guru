@@ -53,6 +53,7 @@ const Header = () => {
             </li>
           </ul>
         </nav>
+        <div class="sidebar-overlay"></div>
       </div>
     </header>
   )
