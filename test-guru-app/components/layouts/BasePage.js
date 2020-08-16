@@ -1,6 +1,6 @@
 import React from 'react';
 import Head from 'next/head';
-import { useRouter } from 'next/router';
+import Footer from './Footer';
 
 const BasePage = (props) => {
   const { children } = props;
@@ -24,10 +24,13 @@ const BasePage = (props) => {
     		<script src="assets/js/script.js" />
         <script src="assets/js/html5shiv.min.js" />
 			  <script src="assets/js/respond.min.js" />
+        <script src="assets/plugins/theia-sticky-sidebar/ResizeSensor.js" />
+        <script src="assets/plugins/theia-sticky-sidebar/theia-sticky-sidebar.js" />
       </Head>
       <div className="main-wrapper">
         {children}
       </div>
+      <Footer />
     </>
   )
 }
