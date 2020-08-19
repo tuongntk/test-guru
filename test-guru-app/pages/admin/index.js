@@ -74,9 +74,17 @@ export default function Home() {
                       <div className="form-group">
                         <label>Blog Description</label>
 
-                        <Slate editor={editor} value={value} onChange={value => setValue(value)}>
-                          <Editable placeholder="Enter some plain text..." />
-                        </Slate>
+                        <div className="card">
+                          <div className="card-body">
+                            <div className="row">
+                              <div className="col-12 blog-details">
+                                <Slate editor={editor} value={value} onChange={value => setValue(value)}>
+                                  <Editable placeholder="Enter some plain text..." />
+                                </Slate>
+                              </div>
+                            </div>  
+                          </div>
+                        </div>
 
                       </div>
                       <div className="form-group">
