@@ -1,10 +1,26 @@
+import React, { useEffect, useMemo, useState } from "react";
+import { createEditor } from 'slate'
+import { Slate, Editable, withReact } from 'slate-react'
+import { withHistory } from 'slate-history'
+
 import BasePage from '../../components/layouts/admin/BasePage';
 import Header from '../../components/layouts/admin/Header';
 import PageWrapper from '../../components/layouts/admin/PageWrapper';
 import PageHeader from '../../components/layouts/admin/PageHeader';
 import SideBar from '../../components/layouts/admin/SideBar';
 
+const initialValue = [
+  {
+    children: [
+      { text: 'This is editable plain text, just like a <textarea>!' },
+    ],
+  },
+]
+
 export default function Home() {
+  const [value, setValue] = useState(initialValue)
+  const editor = useMemo(() => withHistory(withReact(createEditor())), [])
+
   return (
     <BasePage>
       <Header />
@@ -57,7 +73,11 @@ export default function Home() {
                       </div>
                       <div className="form-group">
                         <label>Blog Description</label>
-                        <textarea cols={30} rows={6} className="form-control" defaultValue={""} />
+
+                        <Slate editor={editor} value={value} onChange={value => setValue(value)}>
+                          <Editable placeholder="Enter some plain text..." />
+                        </Slate>
+
                       </div>
                       <div className="form-group">
                         <label className="display-block w-100">Blog Status</label>

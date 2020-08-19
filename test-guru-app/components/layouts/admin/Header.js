@@ -12,7 +12,7 @@ const Header = () => {
           <img src="assets/img/logo-small.png" alt="Logo" width={30} height={30} />
         </a>
       </div>
-      <a href="javascript:void(0);" id="toggle_btn">
+      <a href="#" id="toggle_btn">
         <i className="fe fe-text-align-left" />
       </a>
       <div className="top-nav-search">
@@ -32,7 +32,7 @@ const Header = () => {
           <div className="dropdown-menu notifications">
             <div className="topnav-dropdown-header">
               <span className="notification-title">Notifications</span>
-              <a href="javascript:void(0)" className="clear-noti"> Clear All </a>
+              <a href="#" className="clear-noti"> Clear All </a>
             </div>
             <div className="noti-content">
               <ul className="notification-list">
