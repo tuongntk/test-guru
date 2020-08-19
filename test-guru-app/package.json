@@ -8,11 +8,13 @@
     "start": "next start"
   },
   "dependencies": {
+    "emotion": "^10.0.9",
     "next": "9.5.2",
     "react": "16.13.1",
     "react-dom": "16.13.1",
     "slate": "^0.58.4",
     "slate-history": "^0.58.4",
+    "slate-hyperscript": "^0.58.4",
     "slate-react": "^0.58.4"
   }
 }
