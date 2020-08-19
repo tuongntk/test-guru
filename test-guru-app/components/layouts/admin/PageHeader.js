@@ -4,10 +4,10 @@ import Link from 'next/link';
 const PageHeader = (props) => {
   const { title } = props;
   return (
-    <div class="page-header">
-      <div class="row">
-        <div class="col-sm-12">
-          <h3 class="page-title">{title}</h3>
+    <div className="page-header">
+      <div className="row">
+        <div className="col-sm-12">
+          <h3 className="page-title">{title}</h3>
         </div>
       </div>
     </div>

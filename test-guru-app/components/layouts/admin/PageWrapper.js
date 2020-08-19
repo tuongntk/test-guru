@@ -4,7 +4,7 @@ const PageWrapper = (props) => {
   const { children } = props;
   return (
     <div className="page-wrapper">
-      <div class="content container-fluid">
+      <div className="content container-fluid">
         {children}
       </div>
     </div>
