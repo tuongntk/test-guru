@@ -1,40 +1,32 @@
 import mongoose from 'mongoose'
 
 const ArticleSchema = new mongoose.Schema({
-  name: {
+  title: {
     type: String,
-    required: [true, 'Please provide a name for this category.'],
-    maxlength: [250, 'Name cannot be more than 250 characters'],
+    required: [true, 'Please provide a name for this article.'],
+    maxlength: [512, 'Title cannot be more than 512 characters'],
+    trim: true
   },
-  owner_name: {
+  description: {
     type: String,
-    required: [true, "Please provide the pet owner's name"],
-    maxlength: [20, "Owner's Name cannot be more than 60 characters"],
+    maxlength: [1024, 'Description cannot be more than 1024 characters'],
+    trim: true
   },
-  species: {
-    type: String,
-    required: [true, 'Please specify the species of your pet.'],
-    maxlength: [30, 'Species specified cannot be more than 40 characters'],
+  avatar: { type: String },
+  avatarType: { type: String, default: 'image', enum: ['image', 'youtube'] },
+  slug: { type: String, unique: true, sparse: true, trim: true },
+  content: { type: String, required: [true, "Please provide the article's content"] },
+  categoryId: { type: String },
+  createdAuthorId: { type: String },
+  updatedAuthorId: { type: String },
+  commentCount: { type: Number },
+  tags: [{ type: String }],
+  status: {
+    type: String, default: 'draft', enum: ['draft', 'published', 'deleted'],
+    required: [true, "Please provide the article's status"]
   },
-  age: {
-    type: Number,
-  },
-  poddy_trained: {
-    type: Boolean,
-  },
-  diet: {
-    type: Array,
-  },
-  image_url: {
-    required: [true, 'Please provide an image url for this pet.'],
-    type: String,
-  },
-  likes: {
-    type: Array,
-  },
-  dislikes: {
-    type: Array,
-  },
+  createdAt: { type: Date, default: Date.now },
+  updatedAt: { type: Date, default: Date.now }
 })
 
 export default mongoose.models.Articles || mongoose.model('Articles', ArticleSchema)

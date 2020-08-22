@@ -1,40 +1,22 @@
 import mongoose from 'mongoose'
 
-const CateogrySchema = new mongoose.Schema({
+const CategorySchema = new mongoose.Schema({
   name: {
     type: String,
     required: [true, 'Please provide a name for this category.'],
-    maxlength: [250, 'Name cannot be more than 250 characters'],
+    maxlength: [125, 'Name cannot be more than 125 characters'],
   },
-  owner_name: {
+  description: {
     type: String,
-    required: [true, "Please provide the pet owner's name"],
-    maxlength: [20, "Owner's Name cannot be more than 60 characters"],
+    maxlength: [512, 'Description cannot be more than 512 characters'],
+    trim: true
   },
-  species: {
-    type: String,
-    required: [true, 'Please specify the species of your pet.'],
-    maxlength: [30, 'Species specified cannot be more than 40 characters'],
-  },
-  age: {
-    type: Number,
-  },
-  poddy_trained: {
-    type: Boolean,
-  },
-  diet: {
-    type: Array,
-  },
-  image_url: {
-    required: [true, 'Please provide an image url for this pet.'],
-    type: String,
-  },
-  likes: {
-    type: Array,
-  },
-  dislikes: {
-    type: Array,
-  },
+  parentId: { type: String },
+  isDeleted: { type: Boolean },
+  createdUserId: { type: String },
+  updatedUserId: { type: String },
+  createdAt: { type: Date, default: Date.now },
+  updatedAt: { type: Date, default: Date.now }
 })
 
-export default mongoose.models.Categories || mongoose.model('Categories', CateogrySchema)
+export default mongoose.models.Categories || mongoose.model('Categories', CategorySchema)

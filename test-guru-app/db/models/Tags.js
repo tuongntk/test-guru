@@ -16,7 +16,7 @@ const TagSchema = new mongoose.Schema({
     required: [true, 'Please specify the species of your pet.'],
     maxlength: [30, 'Species specified cannot be more than 40 characters'],
   },
-  age: {
+  count: {
     type: Number,
   },
   poddy_trained: {
