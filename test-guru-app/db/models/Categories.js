@@ -12,7 +12,7 @@ const CategorySchema = new mongoose.Schema({
     trim: true
   },
   parentId: { type: String },
-  isDeleted: { type: Boolean },
+  isDeleted: { type: Boolean, default: false },
   createdUserId: { type: String },
   updatedUserId: { type: String },
   createdAt: { type: Date, default: Date.now },
