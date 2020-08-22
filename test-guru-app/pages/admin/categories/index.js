@@ -15,7 +15,6 @@ const Categories = () => {
       <PageWrapper>
         <PageHeader title="Categories" />
 
-        alidsadas
         
 
       </PageWrapper>
