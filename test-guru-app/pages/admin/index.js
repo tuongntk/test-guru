@@ -1,11 +1,11 @@
 
 import React, { useCallback, useMemo, useState } from 'react'
 
-import BasePage from '../../components/layouts/admin/BasePage'
-import Header from '../../components/layouts/admin/Header'
-import PageWrapper from '../../components/layouts/admin/PageWrapper'
-import PageHeader from '../../components/layouts/admin/PageHeader'
-import SideBar from '../../components/layouts/admin/SideBar'
+import BasePage from '@/components/layouts/admin/BasePage'
+import Header from '@/components/layouts/admin/Header'
+import PageWrapper from '@/components/layouts/admin/PageWrapper'
+import PageHeader from '@/components/layouts/admin/PageHeader'
+import SideBar from '@/components/layouts/admin/SideBar'
 
 import RichMarkDownEditor from "rich-markdown-editor";
 
@@ -28,7 +28,6 @@ class YoutubeEmbed extends React.Component {
 
 export default function Home() {
   const [setting, setSetting] = useState({
-    readOnly: false,
     template: false,
     value: undefined,
   })
