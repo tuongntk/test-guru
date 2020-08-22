@@ -1,6 +1,6 @@
 import mongoose from 'mongoose'
 
-const CateogrySchema = new mongoose.Schema({
+const TagSchema = new mongoose.Schema({
   name: {
     type: String,
     required: [true, 'Please provide a name for this category.'],
@@ -37,4 +37,4 @@ const CateogrySchema = new mongoose.Schema({
   },
 })
 
-export default mongoose.models.Categories || mongoose.model('Categories', CateogrySchema)
+export default mongoose.models.Tags || mongoose.model('Tags', TagSchema)
