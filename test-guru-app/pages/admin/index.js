@@ -7,6 +7,7 @@ import PageWrapper from '@/components/layouts/admin/PageWrapper'
 import PageHeader from '@/components/layouts/admin/PageHeader'
 import SideBar from '@/components/layouts/admin/SideBar'
 
+import { useMutate } from "restful-react";
 import RichMarkDownEditor from "rich-markdown-editor";
 
 class YoutubeEmbed extends React.Component {
@@ -31,6 +32,20 @@ export default function Home() {
     template: false,
     value: undefined,
   })
+
+  const { mutate: uploadImage, loading, error } = useMutate({
+    verb: 'POST',
+    path: `${process.env.TEST_GURU_API_URL}/images/upload`
+  });
+
+  const _uploadImage = async (file) => {
+    const formData = new FormData();
+    formData.append('image', file);
+    const result = await uploadImage(formData)
+    console.log('Upload image! %o', result)
+
+    return result.secure_url
+  }
 
   const handleToggleTemplate = () => {
     setSetting({ template: !setting.template })
@@ -106,13 +121,7 @@ export default function Home() {
                                   template={setting.template}
                                   uploadImage={file => {
                                     console.log("File upload triggered: ", file);
-                                    // Delay to simulate time taken to upload
-                                    return new Promise(resolve => {
-                                      setTimeout(
-                                        () => resolve("https://loremflickr.com/1000/1000"),
-                                        1500
-                                      );
-                                    });
+                                    return _uploadImage(file);
                                   }}
                                   embeds={[
                                     {
