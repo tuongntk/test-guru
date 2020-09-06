@@ -1,4 +1,4 @@
-
+import axios from 'axios';
 import { useState, useEffect } from 'react';
 import { useForm } from "react-hook-form";
 import { useMutate } from "restful-react";
@@ -40,8 +40,10 @@ const ArticleForm = ({ onSubmit, initialData = {} }) => {
     const formData = new FormData();
     formData.append('image', file);
     const result = await uploadImage(formData)
+    
     console.log('Upload image! %o', result)
 
+    setValue('articleThumbnailImage', content);
     return result.secure_url
   }
 
@@ -53,12 +55,13 @@ const ArticleForm = ({ onSubmit, initialData = {} }) => {
   useEffect(() => {
     register({ name: 'articleTitle' });
     register({ name: 'articleContent' });
+    register({ name: 'articleThumbnailImage' });
   }, [register])
 
   useEffect(() => {
     const { articleTitle, articleContent } = initialData;
-    if (articleTitle) { setArticleTitle(articleTitle) }
-    if (articleContent) { setArticleContent(articleContent) }
+    if (articleTitle) { setArticleTitle(articleTitle); }
+    if (articleContent) { setArticleContent(articleContent); }
   }, [initialData])
 
   return (
