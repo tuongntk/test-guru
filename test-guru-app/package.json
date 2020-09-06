@@ -20,7 +20,7 @@
     "react-hook-form": "^6.4.1",
     "react-toastify": "^6.0.8",
     "restful-react": "^14.5.1",
-    "rich-markdown-editor": "^10.6.2",
+    "rich-markdown-editor": "^10.6.7",
     "slate": "^0.58.4",
     "slate-history": "^0.58.4",
     "slate-hyperscript": "^0.58.4",

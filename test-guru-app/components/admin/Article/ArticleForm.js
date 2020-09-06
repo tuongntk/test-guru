@@ -1,7 +1,6 @@
 
 import { useState, useEffect } from 'react';
 import { useForm } from "react-hook-form";
-
 import { useMutate } from "restful-react";
 import RichMarkDownEditor from "rich-markdown-editor";
 
@@ -46,17 +45,9 @@ const ArticleForm = ({ onSubmit, initialData = {} }) => {
     return result.secure_url
   }
 
-  const handleChange = (x) => {
-    // const text = value();
-    console.log(`%o`, setting);
-    // setArticleContent({ value: text })
-  };
-
-  const handleUpdateValue = () => {
-    const existing = "";
-    const value = `${existing}\n\nedit!`;
-
-    setSetting({ value })
+  const handleChange = (value) => {
+    const content = value();
+    setValue('articleContent', content);
   };
 
   useEffect(() => {
@@ -91,7 +82,6 @@ const ArticleForm = ({ onSubmit, initialData = {} }) => {
                   uploadImage={file => {
                     return saveUploadImage(file);
                   }}
-                  onSave={options => console.log("Save triggered", options)}
                   onChange={handleChange}
                   embeds={[
                     {
