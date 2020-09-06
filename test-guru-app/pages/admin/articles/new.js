@@ -10,11 +10,6 @@ import SideBar from '@/components/layouts/admin/SideBar'
 import ArticleForm from '@/components/admin/Article/ArticleForm';
 
 const ArticleNew = () => {
-  const [setting, setSetting] = useState({
-    template: false,
-    value: undefined,
-  })
-
   const addArticle = async (data) => {
     // try {
     //   await updatePortfolio(router.query.id, data);

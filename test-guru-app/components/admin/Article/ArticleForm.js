@@ -23,13 +23,13 @@ class YoutubeEmbed extends React.Component {
 }
 
 const ArticleForm = ({ onSubmit, initialData = {} }) => {
-  const [categoryName, setCategoryName] = useState(null);
-  const [categoryDescription, setCategoryDescription] = useState(null);
+  const [articleTitle, setArticleTitle] = useState(null);
+  const [articleContent, setArticleContent] = useState(null);
   const { register, handleSubmit, setValue, errors } = useForm({ defaultValues: initialData });
 
   const [setting, setSetting] = useState({
     template: false,
-    value: undefined,
+    value: '',
   })
 
   const { mutate: uploadImage, loading, error } = useMutate({
@@ -37,7 +37,7 @@ const ArticleForm = ({ onSubmit, initialData = {} }) => {
     path: `${process.env.TEST_GURU_API_URL}/images/upload`
   });
 
-  const _uploadImage = async (file) => {
+  const saveUploadImage = async (file) => {
     const formData = new FormData();
     formData.append('image', file);
     const result = await uploadImage(formData)
@@ -46,8 +46,10 @@ const ArticleForm = ({ onSubmit, initialData = {} }) => {
     return result.secure_url
   }
 
-  const handleToggleTemplate = () => {
-    setSetting({ template: !setting.template })
+  const handleChange = (x) => {
+    // const text = value();
+    console.log(`%o`, setting);
+    // setArticleContent({ value: text })
   };
 
   const handleUpdateValue = () => {
@@ -58,14 +60,14 @@ const ArticleForm = ({ onSubmit, initialData = {} }) => {
   };
 
   useEffect(() => {
-    register({ name: 'categoryName' });
-    register({ name: 'categoryDescription' });
+    register({ name: 'articleTitle' });
+    register({ name: 'articleContent' });
   }, [register])
 
   useEffect(() => {
-    const { categoryName, categoryDescription } = initialData;
-    if (categoryName) { setCategoryName(categoryName) }
-    if (categoryDescription) { setEndDate(categoryDescription) }
+    const { articleTitle, articleContent } = initialData;
+    if (articleTitle) { setArticleTitle(articleTitle) }
+    if (articleContent) { setArticleContent(articleContent) }
   }, [initialData])
 
   return (
@@ -82,23 +84,22 @@ const ArticleForm = ({ onSubmit, initialData = {} }) => {
             <div className="row">
               <div className="col-12 blog-details">
                 <RichMarkDownEditor
-                  defaultValue="Hello world!"
+                  id="articleContent"
+                  defaultValue=""
                   value={setting.value}
                   template={setting.template}
                   uploadImage={file => {
-                    console.log("File upload triggered: ", file);
-                    return _uploadImage(file);
+                    return saveUploadImage(file);
                   }}
+                  onSave={options => console.log("Save triggered", options)}
+                  onChange={handleChange}
                   embeds={[
                     {
                       title: "YouTube",
-                      keywords: "youtube video tube google",
+                      keywords: "Test Guru Vietnam",
                       icon: () => (
-                        <img
-                          src="https://upload.wikimedia.org/wikipedia/commons/7/75/YouTube_social_white_squircle_%282017%29.svg"
-                          width={24}
-                          height={24}
-                        />
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/7/75/YouTube_social_white_squircle_%282017%29.svg"
+                          width={24} height={24} />
                       ),
                       matcher: url => {
                         return url.match(

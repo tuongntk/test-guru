@@ -15,7 +15,7 @@ const CategoryForm = ({ onSubmit, initialData = {} }) => {
   useEffect(() => {
     const { categoryName, categoryDescription } = initialData;
     if (categoryName) { setCategoryName(categoryName) }
-    if (categoryDescription) { setEndDate(categoryDescription) }
+    if (categoryDescription) { setCategoryDescription(categoryDescription) }
   }, [initialData])
 
   return (
