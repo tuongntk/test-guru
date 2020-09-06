@@ -72,15 +72,8 @@ const ArticleForm = ({ onSubmit, initialData = {} }) => {
     <form onSubmit={handleSubmit(onSubmit)}>
       <div className="form-group">
         <label htmlFor="articleTitle">Title</label>
-        <input className="form-control" type="text" id="articleTitle" name="articleTitle" required
+        <input className="form-control" type="text" id="articleTitle" name="articleTitle" placeholder="Title" required
           ref={register({ required: "Required" })} />
-      </div>
-      <div className="form-group">
-        <label>Blog Images</label>
-        <div>
-          <input className="form-control" type="file" />
-          <small className="form-text text-muted">Max. file size: 50 MB. Allowed images: jpg, gif, png. Maximum 10 images only.</small>
-        </div>
       </div>
       <div className="form-group">
         <label>Content</label>
@@ -120,9 +113,13 @@ const ArticleForm = ({ onSubmit, initialData = {} }) => {
             </div>
           </div>
         </div>
-
       </div>
-      <div className="m-t-20 text-center">
+      <div className="form-group">
+        <label htmlFor="articleThumbnailYoutube">Thumbnail</label>
+        <input className="form-control" type="text" id="articleThumbnailYoutube" name="articleThumbnailYoutube"
+          placeholder="Thumbnail Youtube Link" ref={register} />
+      </div>
+      <div className="m-t-20">
         <button className="btn btn-primary btn-lg" type="submit">Save</button>
       </div>
     </form>
