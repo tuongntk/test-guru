@@ -31,13 +31,16 @@ export default async function handleArticle(req, res) {
     return res.json(json.data);
   }
 
-  // if (method === 'POST') {
-  //   try {
-  //     const { accessToken } = await auth0.getSession(req);
-  //     const json = await new BlogApi(accessToken).update(req.query.id, req.body);
-  //     return res.json(json.data);
-  //   } catch(e) {
-  //     return res.status(e.status || 422).json(e.response.data);
-  //   }
-  // }
+  if (method === 'POST') {
+    try {
+      //const { accessToken } = await auth0.getSession(req);
+      const accessToken = null;
+
+      const json = await new ArticleApi(accessToken).create(req.body);
+
+      return res.json(json.data);
+    } catch(e) {
+      return res.status(e.status || 422).json(e.response.data);
+    }
+  }
 }

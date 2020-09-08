@@ -36,6 +36,8 @@ class BaseApi {
   }
 
   create(data) {
+
+    console.log('data %o', this.apiUrl);
     return axios.post(this.apiUrl, data, this.config);
   }
 }
