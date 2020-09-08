@@ -12,7 +12,7 @@ import ArticleApi from '@/libs/api/articles';
 import { useCreateArticle } from '@/services/articles';
 
 const Articles = ({ articles }) => {
-  
+
   return (
     <BasePage>
       <Header />
@@ -48,12 +48,14 @@ const Articles = ({ articles }) => {
                             <td></td>
                             <td></td>
                             <td></td>
-                            <td></td>
+                            <td className="text-center">
+                              <span className="badge badge-pill bg-success inv-badge">{article.status}</span>
+                            </td>
                             <td></td>
                           </tr>
                         )
                       }
-                      <tr>
+                      {/* <tr>
                         <td><a href="invoice.html">#IN0001</a></td>
                         <td>#01</td>
                         <td>
@@ -74,7 +76,7 @@ const Articles = ({ articles }) => {
                               <i className="fe fe-trash" /> Delete</a>
                           </div>
                         </td>
-                      </tr>
+                      </tr> */}
                     </tbody>
                   </table>
                 </div>
@@ -93,13 +95,8 @@ const Articles = ({ articles }) => {
 export async function getServerSideProps(context) {
   const { data } = await new ArticleApi().getAll();
 
-
-  const articles = data.data.map(item => ({...item}));
-
-  console.log(articles);
-
   return {
-    props: { articles }
+    props: { articles: data }
   }
 }
 

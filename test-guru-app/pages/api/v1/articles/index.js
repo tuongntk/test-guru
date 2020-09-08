@@ -9,16 +9,7 @@ async function createArticle(req, res) {
     const accessToken = null;
     const json = await new ArticleApi(accessToken).create(req.body);
     return res.json(json.data);
-  } catch(e) {
-    return res.status(e.status || 400).json(e.response.data);
-  }
-}
-
-async function getArticles(req, res) {
-  try {
-    const { data } = await new ArticleApi().getAll();
-    return res.json(data);
-  } catch(e) {
+  } catch (e) {
     return res.status(e.status || 400).json(e.response.data);
   }
 }
@@ -26,21 +17,21 @@ async function getArticles(req, res) {
 export default async function handleArticle(req, res) {
   const { method } = req
 
-  if (method === 'GET') {
-    const json = await getArticles(req, res);
-    return res.json(json.data);
-  }
+  try {
+    if (method === 'GET') {
+      const json = await new ArticleApi().getAll();
+      return res.json(json.data);
+    }
 
-  if (method === 'POST') {
-    try {
+    if (method === 'POST') {
       //const { accessToken } = await auth0.getSession(req);
       const accessToken = null;
-
       const json = await new ArticleApi(accessToken).create(req.body);
 
       return res.json(json.data);
-    } catch(e) {
-      return res.status(e.status || 422).json(e.response.data);
     }
+
+  } catch (e) {
+    return res.status(e.status || 422).json(e.response.data);
   }
 }
