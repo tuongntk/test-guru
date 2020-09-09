@@ -14,7 +14,35 @@ const Home = ({ articles }) => {
         <div className="container-fluid">
           <div className="row">
             <div className="col-lg-8 col-md-12">
-              <div className="blog">
+              {
+                articles.map(article =>
+                  <div key={article._id} className="blog">
+                    {/* <div className="blog-image">
+                      <a href="blog-details.html"><img className="img-fluid" src="assets/img/blog/blog-01.jpg" alt="Post Image" /></a>
+                    </div> */}
+                    <h3 className="blog-title"><a href="blog-details.html">{article.title}</a></h3>
+                    <div className="blog-info clearfix">
+                      <div className="post-left">
+                        <ul>
+                          <li>
+                            <div className="post-author">
+                              <a href="profile.html"><img src="assets/img/user/user.jpg" alt="Post Author" /> <span>Ruby Perrin</span></a>
+                            </div>
+                          </li>
+                          <li><i className="far fa-clock" />4 Dec 2019</li>
+                          <li><i className="far fa-comments" />12 Comments</li>
+                          <li><i className="fa fa-tags" />HTML</li>
+                        </ul>
+                      </div>
+                    </div>
+                    <div className="blog-content">
+                      <p>{article.content}</p>
+                      <a href="blog-details.html" className="read-more">Read More</a>
+                    </div>
+                  </div>
+                )
+              }
+              {/* <div className="blog">
                 <div className="blog-image">
                   <a href="blog-details.html"><img className="img-fluid" src="assets/img/blog/blog-01.jpg" alt="Post Image" /></a>
                 </div>
@@ -63,8 +91,8 @@ const Home = ({ articles }) => {
                   <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco sit laboris ullamco laborisut aliquip ex ea commodo consequat. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
                   <a href="blog-details.html" className="read-more">Read More</a>
                 </div>
-              </div>
-              
+              </div> */}
+
               <div className="row">
                 <div className="col-md-12">
                   <div className="blog-pagination">
