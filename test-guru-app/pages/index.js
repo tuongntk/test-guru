@@ -4,7 +4,9 @@ import BasePage from '../components/layouts/BasePage';
 import Header from '../components/layouts/Header';
 import Content from '../components/layouts/Content';
 
-export default function Home() {
+import ArticleApi from '@/libs/api/articles';
+
+const Home = ({ articles }) => {
   return (
     <BasePage>
       <Header />
@@ -28,30 +30,6 @@ export default function Home() {
                       <li><i className="far fa-clock" />4 Dec 2019</li>
                       <li><i className="far fa-comments" />12 Comments</li>
                       <li><i className="fa fa-tags" />HTML</li>
-                    </ul>
-                  </div>
-                </div>
-                <div className="blog-content">
-                  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco sit laboris ullamco laborisut aliquip ex ea commodo consequat. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-                  <a href="blog-details.html" className="read-more">Read More</a>
-                </div>
-              </div>
-              <div className="blog">
-                <div className="blog-image">
-                  <a href="blog-details.html"><img className="img-fluid" src="assets/img/blog/blog-02.jpg" alt /></a>
-                </div>
-                <h3 className="blog-title"><a href="blog-details.html">1914 translation by H. Rackham</a></h3>
-                <div className="blog-info clearfix">
-                  <div className="post-left">
-                    <ul>
-                      <li>
-                        <div className="post-author">
-                          <a href="profile.html"><img src="assets/img/user/user1.jpg" alt="Post Author" /> <span>Darren Elder</span></a>
-                        </div>
-                      </li>
-                      <li><i className="far fa-clock" />3 Dec 2019</li>
-                      <li><i className="far fa-comments" />7 Comments</li>
-                      <li><i className="fa fa-tags" />Java Script</li>
                     </ul>
                   </div>
                 </div>
@@ -86,32 +64,7 @@ export default function Home() {
                   <a href="blog-details.html" className="read-more">Read More</a>
                 </div>
               </div>
-              <div className="blog">
-                <div className="blog-image">
-                  <div className="video">
-                    <iframe width={940} src="https://www.youtube.com/embed/svmGQhQLuBQ" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowFullScreen />
-                  </div>
-                </div>
-                <h3 className="blog-title"><a href="blog-details.html">Section 1.10.32 of "de Finibus Bonorum et Malorum</a></h3>
-                <div className="blog-info clearfix">
-                  <div className="post-left">
-                    <ul>
-                      <li>
-                        <div className="post-author">
-                          <a href="profile.html"><img src="assets/img/user/user3.jpg" alt="Post Author" /> <span>Sofia Brient</span></a>
-                        </div>
-                      </li>
-                      <li><i className="far fa-clock" />2 Dec 2019</li>
-                      <li><i className="far fa-comments" />41 Comments</li>
-                      <li><i className="fa fa-tags" />Css</li>
-                    </ul>
-                  </div>
-                </div>
-                <div className="blog-content">
-                  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco sit laboris ullamco laborisut aliquip ex ea commodo consequat. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-                  <a href="blog-details.html" className="read-more">Read More</a>
-                </div>
-              </div>
+              
               <div className="row">
                 <div className="col-md-12">
                   <div className="blog-pagination">
@@ -160,7 +113,7 @@ export default function Home() {
                     <li>
                       <div className="post-thumb">
                         <a href="blog-details.html">
-                          <img className="img-fluid" src="assets/img/blog/blog-thumb-01.jpg" alt />
+                          <img className="img-fluid" src="assets/img/blog/blog-thumb-01.jpg" alt="" />
                         </a>
                       </div>
                       <div className="post-info">
@@ -173,7 +126,7 @@ export default function Home() {
                     <li>
                       <div className="post-thumb">
                         <a href="blog-details.html">
-                          <img className="img-fluid" src="assets/img/blog/blog-thumb-02.jpg" alt />
+                          <img className="img-fluid" src="assets/img/blog/blog-thumb-02.jpg" alt="" />
                         </a>
                       </div>
                       <div className="post-info">
@@ -186,7 +139,7 @@ export default function Home() {
                     <li>
                       <div className="post-thumb">
                         <a href="blog-details.html">
-                          <img className="img-fluid" src="assets/img/blog/blog-thumb-03.jpg" alt />
+                          <img className="img-fluid" src="assets/img/blog/blog-thumb-03.jpg" alt="" />
                         </a>
                       </div>
                       <div className="post-info">
@@ -199,7 +152,7 @@ export default function Home() {
                     <li>
                       <div className="post-thumb">
                         <a href="blog-details.html">
-                          <img className="img-fluid" src="assets/img/blog/blog-thumb-04.jpg" alt />
+                          <img className="img-fluid" src="assets/img/blog/blog-thumb-04.jpg" alt="" />
                         </a>
                       </div>
                       <div className="post-info">
@@ -212,7 +165,7 @@ export default function Home() {
                     <li>
                       <div className="post-thumb">
                         <a href="blog-details.html">
-                          <img className="img-fluid" src="assets/img/blog/blog-thumb-05.jpg" alt />
+                          <img className="img-fluid" src="assets/img/blog/blog-thumb-05.jpg" alt="" />
                         </a>
                       </div>
                       <div className="post-info">
@@ -276,3 +229,13 @@ export default function Home() {
     </BasePage>
   )
 }
+
+export async function getStaticProps() {
+  const { data } = await new ArticleApi().getAll();
+  return {
+    props: { articles: data },
+    revalidate: 60
+  }
+}
+
+export default Home

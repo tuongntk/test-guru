@@ -9,8 +9,6 @@ import PageHeader from '@/components/layouts/admin/PageHeader'
 import SideBar from '@/components/layouts/admin/SideBar'
 import ArticleApi from '@/libs/api/articles';
 
-import { useCreateArticle } from '@/services/articles';
-
 const Articles = ({ articles }) => {
 
   return (
