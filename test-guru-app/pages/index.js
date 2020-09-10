@@ -1,8 +1,9 @@
+import Link from 'next/link';
 import Head from 'next/head'
-import styles from '../styles/Home.module.css'
-import BasePage from '../components/layouts/BasePage';
-import Header from '../components/layouts/Header';
-import Content from '../components/layouts/Content';
+import styles from '@/styles/Home.module.css'
+import BasePage from '@/components/layouts/BasePage';
+import Header from '@/components/layouts/Header';
+import Content from '@/components/layouts/Content';
 
 import ArticleApi from '@/libs/api/articles';
 
@@ -20,7 +21,12 @@ const Home = ({ articles }) => {
                     {/* <div className="blog-image">
                       <a href="blog-details.html"><img className="img-fluid" src="assets/img/blog/blog-01.jpg" alt="Post Image" /></a>
                     </div> */}
-                    <h3 className="blog-title"><a href="blog-details.html">{article.title}</a></h3>
+
+                    <Link href="/articles/[slug]" as={`/articles/${article.slug}`}>
+
+                      <h3 className="blog-title"><a href="#">{article.title}</a></h3>
+
+                    </Link>
                     <div className="blog-info clearfix">
                       <div className="post-left">
                         <ul>
@@ -37,7 +43,11 @@ const Home = ({ articles }) => {
                     </div>
                     <div className="blog-content">
                       <p>{article.content}</p>
-                      <a href="blog-details.html" className="read-more">Read More</a>
+                      <Link href="/articles/[slug]" as={`/articles/${article.slug}`}>
+                        <a className="read-more">
+                          Read More
+                        </a>
+                      </Link>
                     </div>
                   </div>
                 )
