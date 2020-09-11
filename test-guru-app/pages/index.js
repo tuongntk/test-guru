@@ -262,7 +262,6 @@ const Home = ({ articles }) => {
             </div>
           </div>
         </div>
-
       </Content>
     </BasePage>
   )
