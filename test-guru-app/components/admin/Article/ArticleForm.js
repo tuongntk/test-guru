@@ -43,7 +43,7 @@ const ArticleForm = ({ onSubmit, initialData = {} }) => {
     
     console.log('Upload image! %o', result)
 
-    setValue('articleThumbnailImage', content);
+    setValue('articleThumbnailImage', result.secure_url);
     return result.secure_url
   }
 
