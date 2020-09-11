@@ -217,45 +217,6 @@ const ArticleDetail = ({ article }) => {
                     <li>
                       <div className="post-thumb">
                         <a href="blog-details.html">
-                          <img className="img-fluid" src="assets/img/blog/blog-thumb-02.jpg" alt />
-                        </a>
-                      </div>
-                      <div className="post-info">
-                        <h4>
-                          <a href="blog-details.html">It is a long established fact that a reader will be</a>
-                        </h4>
-                        <p>3 Dec 2019</p>
-                      </div>
-                    </li>
-                    <li>
-                      <div className="post-thumb">
-                        <a href="blog-details.html">
-                          <img className="img-fluid" src="assets/img/blog/blog-thumb-03.jpg" alt />
-                        </a>
-                      </div>
-                      <div className="post-info">
-                        <h4>
-                          <a href="blog-details.html">here are many variations of passages of Lorem Ipsum</a>
-                        </h4>
-                        <p>3 Dec 2019</p>
-                      </div>
-                    </li>
-                    <li>
-                      <div className="post-thumb">
-                        <a href="blog-details.html">
-                          <img className="img-fluid" src="assets/img/blog/blog-thumb-04.jpg" alt />
-                        </a>
-                      </div>
-                      <div className="post-info">
-                        <h4>
-                          <a href="blog-details.html">The standard chunk of Lorem Ipsum used since the</a>
-                        </h4>
-                        <p>2 Dec 2019</p>
-                      </div>
-                    </li>
-                    <li>
-                      <div className="post-thumb">
-                        <a href="blog-details.html">
                           <img className="img-fluid" src="assets/img/blog/blog-thumb-05.jpg" alt />
                         </a>
                       </div>
@@ -271,7 +232,7 @@ const ArticleDetail = ({ article }) => {
               </div>
               {/* /Latest Posts */}
               {/* Categories */}
-              <div className="card category-widget">
+              {/* <div className="card category-widget">
                 <div className="card-header">
                   <h4 className="card-title">Blog Categories</h4>
                 </div>
@@ -285,10 +246,10 @@ const ArticleDetail = ({ article }) => {
                     <li><a href="#">VB <span>(07)</span></a></li>
                   </ul>
                 </div>
-              </div>
+              </div> */}
               {/* /Categories */}
               {/* Tags */}
-              <div className="card tags-widget">
+              {/* <div className="card tags-widget">
                 <div className="card-header">
                   <h4 className="card-title">Tags</h4>
                 </div>
@@ -313,14 +274,12 @@ const ArticleDetail = ({ article }) => {
                     <li><a href="#" className="tag">Asp.net</a></li>
                   </ul>
                 </div>
-              </div>
+              </div> */}
               {/* /Tags */}
             </div>
             {/* /Blog Sidebar */}
           </div>
         </div>
-
-
       </Content>
     </BasePage>
   )
